@@ -6,6 +6,7 @@ public class SnakeAndLadder {
     //variables
     int position = 0;
     int positionCheck = 0;
+    int noOfDiceRoll = 0;
 
     /* This main method is used to call rollDice
      * Store the output of rollDice method
@@ -30,12 +31,13 @@ public class SnakeAndLadder {
      * while loop to check if player reached winning position
      * create instance of random class
      * initializing dice to rollDice
+     * the variable noOfDiceRoll will record the number times to dice rolled
      * using random function to create three random options 0, 1 and 2
      * print option 0, 1 or 2
      * assign them to no play, ladder and snake
      * if Ladder, Player moves forward with dice roll number
      * if Snake, Player moves backward with dice roll number
-     * make sure not finish game till player reaches at exact position 100
+     * make sure not finish game till player reaches at exact position
      * Player will start again if start position is negative or zero
      * at last print the Players position and winning message
      */
@@ -43,6 +45,7 @@ public class SnakeAndLadder {
         while (position < WIN_POSITION) {
             Random random = new Random();
             int dice = rollDice();
+            noOfDiceRoll++;
             int option = random.nextInt(3);
             System.out.println("Player Option Is : " + option);
             System.out.println("0.No Play 1.Ladder 2.Snake");
@@ -68,6 +71,7 @@ public class SnakeAndLadder {
             }
         }
         System.out.println("Winning Position Is : " + position);
+        System.out.println("Number Of Times The Dice Was Rolled To Win The Game Is : " + noOfDiceRoll);
     }
 }
 
