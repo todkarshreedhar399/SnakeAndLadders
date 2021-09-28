@@ -35,7 +35,9 @@ public class SnakeAndLadder {
      * assign them to no play, ladder and snake
      * if Ladder, Player moves forward with dice roll number
      * if Snake, Player moves backward with dice roll number
+     * make sure not finish game till player reaches at exact position 100
      * Player will start again if start position is negative or zero
+     * at last print the Players position and winning message
      */
     public void playerOption() {
         while (position < WIN_POSITION) {
@@ -46,22 +48,26 @@ public class SnakeAndLadder {
             System.out.println("0.No Play 1.Ladder 2.Snake");
             switch (option) {
                 case 1:
-                    position += dice;
-                    if ((position - dice) < positionCheck) {
-                        position = positionCheck;
+                    if ((position + dice) > WIN_POSITION) {
+                        position = WIN_POSITION;
+                    } else {
+                        position += dice;
                     }
                     System.out.println("Ladder Is At : " + position);
                     break;
                 case 2:
                     position -= dice;
+                    if ((position - dice) < positionCheck) {
+                        position = positionCheck;
+                    }
                     System.out.println("Snake Is At : " + position);
                     break;
-
                 default:
                     System.out.println("No Play : " + position);
                     break;
-
             }
         }
+        System.out.println("Winning Position Is : " + position);
     }
 }
+
